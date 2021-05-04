@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+}
+.toolbar{
+    height: 15vh;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+}
+
+.filter-container {
+    background-color: chocolate;
+    height: 70%;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10rem;
+}
+
+.filter {
+    background-color: lightgrey;
+    display: flex;
+    border: 1px darkred;
+    height: 100%;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter_color{
+    height: 50%;
+    width:50%;
+    /* border: 1px solid red; */
+    border-radius: 0.1rem;
+}
+
+.pink{
+    background-color: pink;
+}
+.blue{
+background-color: blue;
+}
+.green{
+background-color: green;
+}
+.black{
+    background-color: rgb(46, 42, 42);
+}
+
+.action-container{
+    height: 70%;
+    width: 6rem;
+    background-color: dimgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15rem;
+    border-radius: 0.2rem;
+}
+
+.icon-container{
+    display: flex;
+    width:50%;
+    align-items:center;
+    justify-content:center;
+}
+
+.fas{
+    font-size: 2rem;
+}
+.active{
+    background-color: #474a4b;
+}
+
+.main_container{
+    height:85vh;
+
+}
+/* modal css */
+.modal_container{
+    position: absolute;
+    height:50%;
+    width:50%;
+    background-color: rgba(66, 56, 56, 0.938);
+    /* variable value */ 
+    left: calc((100vw - 36rem)/2);
+    top:30vh;
+    display: flex;
+    box-shadow: 0 1rem 3rem rgb(27, 27, 26);
+}
+
+.input_container{
+    height:100%;
+    width:75%;
+    background-color: rgba(255, 8, 0, 0.603);
+}
+
+.modal_filter_container{
+    /* height:50%; */
+    width:25%;
+    outline: none;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items: center;
+    padding:5px 5px;
+    
+    /* background-color: rgba(46, 41, 41, 0.938); */
+}
+
+.modal_filter_container>.filter{
+    height:13%;
+    width:40%;
+    padding: 7px;
+    border-radius: 2px;
+}
+
+.modal_input{
+    height:100%;
+    width:100%;
+    padding: 2rem 3rem;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    line-height: 145%;
+    font-weight: 400;
+}
+
+.border{
+    border: 0.2rem solid white;
+}
