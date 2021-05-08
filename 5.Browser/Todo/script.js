@@ -1,6 +1,30 @@
 //  dom node 
 let input = document.querySelector(".input_box");
 let ul = document.querySelector(".task-list");
+let arr = [];
+
+
+if(localStorage.getItem("allTask"))
+        {
+            let stringArr = localStorage.getItem("allTask");
+            // parse
+            arr = JSON.parse(stringArr);
+            for(let i=0;i<arr.length;i++)
+            {
+                let li = document.createElement("li");
+                li.innerText = arr[i];
+                li.addEventListener("dblclick",function(e){
+                    li.remove();
+                })
+                // add any Attribute
+                li.setAttribute("class" , "task");
+                ul.appendChild(li);
+            }
+
+        }
+
+
+
 // let li = document.querySelector(".task");
 input.addEventListener("keydown", function (e) {
     //  e object -> describe -> event 
@@ -14,6 +38,18 @@ input.addEventListener("keydown", function (e) {
         // console.log(task);
         let li = document.createElement("li");
         li.innerText = task;
+        if(localStorage.getItem("allTask"))
+        {
+            let stringArr = localStorage.getItem("allTask");
+            // parse
+            arr = JSON.parse(stringArr);
+        }
+        arr.push(task);
+        // set
+        let stringArr = JSON.stringify(arr);
+        // string
+        localStorage.setItem("allTask",stringArr);
+
         li.addEventListener("dblclick", function (e) {
             li.remove();
         })

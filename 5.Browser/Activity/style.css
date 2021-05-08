@@ -1,8 +1,16 @@
 *{
     box-sizing: border-box;
 }
+
+.body{
+    font-family: sans-serif;
+    height: 100%;
+    background-color:#e0d6d6c4;
+    
+}
 .toolbar{
     height: 15vh;
+    width: 100%;
     background-color: blueviolet;
     display: flex;
     align-items: center;
@@ -73,10 +81,6 @@ background-color: green;
     background-color: #474a4b;
 }
 
-.main_container{
-    height:85vh;
-
-}
 /* modal css */
 .modal_container{
     position: absolute;
@@ -128,4 +132,54 @@ background-color: green;
 
 .border{
     border: 0.2rem solid white;
+}
+
+
+/* Task CSS */
+
+.main_container{
+    height:85vh;
+    overflow: auto;
+    padding-top: 2rem;
+    padding-left: 3rem;   
+    background-color:#e0d6d6c4;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    
+}
+
+.task_container
+{
+    height:25vh;
+    width: 20vw;
+    background-color: white;
+    
+}
+
+.task_desc_container{
+    height:100%;
+
+}
+
+.task_desc{
+    height:45%;
+    overflow: auto;
+    text-align:center;
+    word-break: break-all;
+    margin-bottom: 1rem;
+}
+.task_filter{
+    height:7%;
+    background-color:Color;
+}
+
+.uid{
+    margin-left: 0.5rem;
+    color:black;
+}
+
+.active{
+    background-color:#82888a;
 }

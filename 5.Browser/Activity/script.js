@@ -4,6 +4,7 @@ let bothElementsArr = document.querySelectorAll(".icon-container");
 let crossBtn = bothElementsArr[1]
 let plusButton = bothElementsArr[0];
 let body = document.body;
+let deleteState = false;
 
 for(let i=0;i<colorBtn.length;i++)
 {
@@ -24,7 +25,6 @@ function createModal() {
     let modalContainer = document.querySelector(".modal_container");
     if(modalContainer==null)
     {
-
         modalContainer = document.createElement("div");
         modalContainer.setAttribute("class","modal_container");
         modalContainer.innerHTML = `<div class="input_container">
@@ -70,9 +70,61 @@ function handleModal(modal_container)
         if(e.key=="Enter" && textArea.value != "")
         {
             console.log("Task" , textArea.value);
+            // remove modal
             modal_container.remove();
+            // create taskbox
+            createTask(cColor,textArea.value);
     
         }
     })
 
 }
+
+function createTask(color,task){
+    let taskContainer = document.createElement("div");
+    taskContainer.setAttribute("class","task_container");
+    taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
+    <div class="task_desc_container">
+        <h3 class="uid">#exampleId</h3>
+        <div class="task_desc">${task}</div>
+    </div>`;
+    mainContainer.appendChild(taskContainer);
+
+    let taskFilter = document.querySelector(".task_filter");
+    taskFilter.addEventListener("click",changeColor);
+
+    taskContainer.addEventListener("click", deleteTask);
+}
+
+function changeColor(e){
+    // add event listener
+
+    let taskFilter = e.currentTarget;
+    let colors = ["pink" , "blue" , "green" , "black"];
+    let cColor = taskFilter.classList[1];
+    let idx = colors.indexOf(cColor);
+    let newColorIdx = (idx+1) % 4;
+    taskFilter.classList.remove(cColor);
+    taskFilter.classList.add(colors[newColorIdx]);
+}
+
+function setDeleteState(e){
+    let crossBtn = e.currentTarget;
+    if(deleteState==false)
+    {
+        crossBtn.classList.add("active");
+    }
+    else
+    {
+        crossBtn.classList.remove("active");
+    }
+    deleteState = !deleteState;
+}
+
+// function deleteTask(e){
+//     let taskContainer = e.currentTarget;
+//     if(deleteState){
+
+//     }
+
+// }
