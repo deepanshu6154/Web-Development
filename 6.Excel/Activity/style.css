@@ -1,0 +1,34 @@
+.body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+.menu-container{
+    border: 1px solid red;
+    height: 5rem;
+}
+
+.formula-container{
+    height: 2rem;
+    border: 1px solid red;
+    display: flex;
+}
+
+.grid{
+    height: calc( 100vh - ( 2rem - 5rem - 2.5rem ) );
+    background-color: lightgreen;
+}
+.sheets-container{
+    height: 2.5rem;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+   
+
+}
+
+.icon{
+    font-size: 2rem;
+}
+
