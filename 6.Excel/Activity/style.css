@@ -21,14 +21,38 @@
 }
 .sheets-container{
     height: 2.5rem;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+}
+.icon-container{
+    height: 100%;
+    width: 3%;
     border: 1px solid red;
     display: flex;
     align-items: center;
-   
-
+    justify-content: center;
 }
-
 .icon{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
+.sheet-list{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;   
+}
+
+.sheet{
+    height:100%;
+    min-width:100px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    padding: 5px;
+}
+.active{
+    background:white;
+}

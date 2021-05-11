@@ -1,40 +1,52 @@
 let iconContainer = document.querySelector(".icon-container");
 let sheetList = document.querySelector(".sheet-list");
-iconContainer.addEventListener("click",function(){
-    // create new sheet
-    let newSheet = document.createElement("div");
-    // create element
-    let allSheets = document.querySelector(".sheet");
-    let lastSheet = allSheets[allSheets.length-1];
+
+let firstSheet = document.querySelector(".sheet");
+// Adding event listener on 1st sheet
+firstSheet.addEventListener("click",handleClick);
+
+
+iconContainer.addEventListener("click", function(){
+    let allSheet = document.querySelectorAll(".sheet");
+    let lastSheet = allSheet[allSheet.length-1];
     let idx = lastSheet.getAttribute("idx");
-    newSheet.setAttribute("idx",Number(idx)+1);
-    // text set
-    newSheet.innerText = `Sheet - ${Number(idx) +2 }`;
-    // set class
+    // Create new Sheet
+    let newSheet = document.createElement("div");
+    //  Set class Attribute
     newSheet.setAttribute("class","sheet");
-    // append
+    //  Set index Attribute
+    newSheet.setAttribute("idx",Number(idx)+1);
+    // set innner text in new Sheet
+    newSheet.innerText = `Sheet-${Number(idx)+2}`;
+    //  append in parent list
     sheetList.appendChild(newSheet);
-    // check all sheets
-    allSheets = document.querySelector(".sheet");
-    setLastActive(allSheets);
-    // future click 
-    newSheet.addEventListener("click",handleClick)
+    allSheet = document.querySelectorAll(".sheet");
+    setLast(allSheet);
+    // adding event listener on last sheet
+    newSheet.addEventListener("click",handleClick);
 })
 
-function setLastActive(allSheets){
-    for(let i=0;i<allSheets.length;i++)
+// set active class on last sheet as default when added
+function setLast(allSheet)
+{
+    for(let i=0;i<allSheet.length;i++)
     {
-        allSheets[i].classList.remove("active");
+        allSheet[i].classList.remove("active");
     }
-    allSheets[allSheets.length-1].classList.add("active");
+    allSheet[allSheet.length-1].classList.add("active");
 }
 
-function handleClick(e){
-    let sheet = e.currentTarget;
-    let allSheets = document.querySelector(".sheet");
-    for(let i=0;i<allSheets.length;i++)
+// click handle function to set active class 
+function handleClick(e)
+{
+    let currentSheet = e.currentTarget;
+    let allSheet = document.querySelectorAll(".sheet");
+    for(let i=0;i<allSheet.length;i++)
     {
-        allSheets[i].classList.remove("active");
+        allSheet[i].classList.remove("active");
     }
-    sheet.classList.add("active");
+    if(!currentSheet.classList[1])
+    {
+        currentSheet.classList.add("active");
+    }
 }
