@@ -15,10 +15,6 @@
     display: flex;
 }
 
-.grid{
-    height: calc( 100vh - ( 2rem - 5rem - 2.5rem ) );
-    background-color: lightgreen;
-}
 .sheets-container{
     height: 2.5rem;
     background-color: lightgray;
@@ -55,4 +51,60 @@
 }
 .active{
     background:white;
+}
+
+
+/* Grid- container css*/
+.grid-container{
+    margin: 0;
+    padding: 0;
+    height: calc( 100vh - ( 2rem - 5rem - 2.5rem ) );
+    position: relative;
+    overflow:auto;
+}
+.top-left-block{
+    height: 30px;
+    width: 30px;
+    background-color: gray;
+    position: absolute;
+}
+.top-row{
+    height: 30px;
+    background-color:lightgreen;
+    display:flex;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+}
+.left-col{
+    width: 25px;
+    position: absolute;
+    top: 30px;
+}
+.left-col-box{
+    height: 30px;
+    background-color:lightgreen;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid;
+}
+.col{
+    height: 100%;
+    min-width: 80px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.row{
+    display:flex;
+    height: 30px;
+}
+
+.grid{
+    position: absolute;
+    top: 30px;
+    left: 25px;
 }
