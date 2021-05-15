@@ -4,17 +4,78 @@
 *{
     box-sizing: border-box;
 }
+/* *************************** Menu Container CSS ****************************** */
 .menu-container{
-    border: 1px solid red;
+    background-color: lightblue;
     height: 5rem;
+    display: flex;
+    align-items: center;
 }
-
+.menu-container>*{
+    height:80%;
+    width:20%;
+    border-right: 2px solid;
+}
+.formatting-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.formatting-container>*{
+    /* width: 90%; */
+    justify-content: space-evenly;
+}
+.subgroup{
+    height:100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.subgroup>*{
+    width: 100%;
+}
+.BUI-container{
+    display: flex;
+    justify-content: space-between;
+}
+.BUI-container>*{
+    width: 30%;
+}
+.color-container{
+    display: flex;
+    justify-content:space-between;
+}
+.color-container>*{
+    width:45%;
+}
+.alignment-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alignment-container>*{
+    width:20%;
+}
+/* ***************************************************************************** */
 .formula-container{
     height: 2rem;
-    border: 1px solid red;
+    background-color: lightgray;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.address-box{
+    width:10%;
+}
+.separator{
+    width:2%;
+}
+.formula-box{
+    width: 85%;
 }
 
+/* *********************Sheets Container CSS *********************************** */
 .sheets-container{
     height: 2.5rem;
     background-color: lightgray;
@@ -54,7 +115,7 @@
 }
 
 
-/* Grid- container css*/
+/******************** Grid-container css********************************************/
 .grid-container{
     margin: 0;
     padding: 0;
@@ -64,7 +125,7 @@
 }
 .top-left-block{
     height: 30px;
-    width: 30px;
+    width: 25px;
     background-color: gray;
     position: absolute;
 }
@@ -91,12 +152,14 @@
 }
 .col{
     height: 100%;
+    max-width: 80px;
     min-width: 80px;
     border: 1px solid;
-    display: flex;
+    overflow: auto;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: center; */
 }
 .row{
     display:flex;
@@ -107,4 +170,14 @@
     position: absolute;
     top: 30px;
     left: 25px;
+}
+
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
