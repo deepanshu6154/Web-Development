@@ -57,6 +57,9 @@
 .alignment-container>*{
     width:20%;
 }
+.active-btn{
+    background-color: gray;
+}
 /* ***************************************************************************** */
 .formula-container{
     height: 2rem;

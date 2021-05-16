@@ -26,3 +26,30 @@ for(let i=0;i<100;i++)
     str += "</div>" ;
 }
 grid.innerHTML = str;
+
+
+let workSheetDB = [];
+function initCurrentSheetDB(){
+    let sheetDB = [];
+    for(let i=0;i<100;i++)
+    {
+        let row = [];
+        for(let j=0;j<26;j++)
+        {
+            let cell = {
+                bold:"false",
+                italic:"normal",
+                underline:"none",
+                fontFamily:"arial",
+                fontSize:"10",
+                halign:"left",
+                value: ""
+            }
+            row.push(cell);
+        }
+        sheetDB.push(row);
+    }
+    workSheetDB.push(sheetDB);
+}
+
+initCurrentSheetDB();
