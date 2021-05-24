@@ -18,6 +18,7 @@ let allAlignBtn = document.querySelectorAll(".alignment-container>*");
 let formulaInput = document.querySelector(".formula-box");
 let sheetDB = workSheetDB[0];
 
+// click event on Plus container 
 iconContainer.addEventListener("click", function(){
     let allSheet = document.querySelectorAll(".sheet");
     let lastSheet = allSheet[allSheet.length-1];
@@ -40,6 +41,7 @@ iconContainer.addEventListener("click", function(){
     initCurrentSheetDB();
     sheetDB = workSheetDB[idx];
     initUI();
+    formulaInput.value = "" ;
     // adding event listener on last sheet
     newSheet.addEventListener("click",handleClick);
 })
@@ -57,6 +59,7 @@ function setLast(allSheet)
 // click handle function to set active class 
 function handleClick(e)
 {
+
     let currentSheet = e.currentTarget;
     let allSheet = document.querySelectorAll(".sheet");
     for(let i=0;i<allSheet.length;i++)
@@ -71,6 +74,7 @@ function handleClick(e)
     console.log(sheetIdx);
     sheetDB = workSheetDB[sheetIdx];
     setUI(sheetDB);
+    formulaInput.value = "" ;
 }
 
 // Put the address of cell in address bar when we click on any cell
@@ -85,6 +89,14 @@ for(let i=0;i<Allcells.length;i++)
         addressBar.value = address;
         let cellObj = sheetDB[rid][cid];
 
+        if(cellObj.formula != "")
+        {
+            formulaInput.value = cellObj.formula;
+        }
+        else
+        {
+            formulaInput.value = "" ;
+        }
         // Bold
         if(cellObj.bold==true)
         {
@@ -269,6 +281,9 @@ underlineBtn.addEventListener("click",function(){
 
 // ************************** Formula **************************
 
+//  Blur Event 
+//  value -> value
+//  formula value -> manually value set
 for(let i=0;i<Allcells.length;i++)
 {
     Allcells[i].addEventListener("blur",function(){
@@ -276,22 +291,42 @@ for(let i=0;i<Allcells.length;i++)
         let {rid,cid} = getRidCid(address);
         let cellObj = sheetDB[rid][cid];
 
+        // grid
         let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+        if(cellObj.value == cell.innerText){
+            return;
+        }
+        if(cellObj.formula)
+        {
+            removeFormula(cellObj, address);
+        }
         cellObj.value = cell.innerText;
         changeChildren(cellObj);
     })
 }
 
+//  Enter value in Formula Bar (value -> formula )
+//  Old formula  -> new Formula
 formulaInput.addEventListener("keydown",function(e){
     if(e.key=="Enter" && formulaInput.value!="")
     {
-        let formula = formulaInput.value;
-        // current cell
-        let evaluatedValue = evaluateFormula(formula);
+        let newFormula = formulaInput.value;
         let address = addressBar.value;
+        // get current cell
         let {rid,cid} = getRidCid(address);
+        let cellObj = sheetDB[rid][cid];
+        let prevFormula = cellObj.formula;
+        if(prevFormula == newFormula)
+        {
+            return;
+        }
+        if(prevFormula != "" && prevFormula != newFormula)
+        {
+            removeFormula(cellObj, address);
+        }
+        let evaluatedValue = evaluateFormula(newFormula);
         setUIbyFormula(evaluatedValue,rid,cid);
-        setFormula(evaluatedValue,formula,rid,cid,address);
+        setFormula(evaluatedValue,newFormula,rid,cid,address);
         changeChildren(cellObj);
     }
 })
@@ -326,6 +361,7 @@ function setUIbyFormula(value,rid,cid)
     document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`).innerText = value;
 }
 
+//   formula update in db, set evaluated value in DB and add children to its parent
 function setFormula(value,formula,rid,cid,address)
 {
     let cellObj = sheetDB[rid][cid];
@@ -338,8 +374,8 @@ function setFormula(value,formula,rid,cid,address)
         if(firstCharOfToken >=65 && firstCharOfToken<=90)
         {
             let parentRidCid = getRidCid(formulaTokens[i]);
-            let cellObj = sheetDB[parentRidCid.rid][parentRidCid.cid];
             // get value from db
+            let cellObj = sheetDB[parentRidCid.rid][parentRidCid.cid];
             cellObj.children.push(address);
         }
     }
@@ -366,6 +402,26 @@ function changeChildren(cellObj)
     }
 }
 
+//  remove urself from parent 
+function removeFormula(cellObj, address)
+{
+    let formula = cellObj.formula;
+    let formulaToken = formula.split(" ");
+    
+    for(let i=0;i<formulaToken.length;i++)
+    {
+        let firstCharOfToken = formulaToken[i].charCodeAt(0);
+        if(firstCharOfToken>=65 && firstCharOfToken<=90)
+        {
+            let parentRidCid = getRidCid(formulaToken[i]);
+            let parentObj = sheetDB[parentRidCid.rid][parentRidCid.cid];
+            let childrens = parentObj.children;
+            let idx = childrens.indexOf(address);
+            childrens.splice(idx,1);
+        }
+    }
+    cellObj.formula = "";
+}
 // Helper Function
 
 function initUI(){
