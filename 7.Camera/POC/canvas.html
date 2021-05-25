@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .button-container{
+            height: 5rem;
+            width: 20vw;
+            margin: 0 auto;
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: lightgray;
+        }
+        .color-btn{
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button id="red-btn" class="red color-btn"></button>
+        <button id="green-btn" class="green color-btn"></button>
+        <button id="yellow-btn" class="yellow color-btn"></button>
+    </div>
+    <canvas id="board"></canvas>
+    <script>
+        let board = document.getElementById('board');
+        // height width
+        
+        // 2D
+        let tool = board.getContext("2d");
+        // x , y , width , height
+        board.height = window.innerHeight ;
+        board.width =  window.innerWidth;
+        
+        // window.addEventListener("resize",function(){
+        //     board.height = window.innerHeight
+        //     board.width =  window.innerWidth;
+        //     // whenever you cahnge the heightor width of canvas
+        //     draw();
+        // })
+        // function draw(){
+        //     // by default color black
+        //     tool.fillStyle = "red";
+        //     // x, y , width,height
+        //     tool.fillRect(0,0,board.width/2,board.height/2);
+        // }
+        // draw();
+
+        tool.beginPath();
+        // tool.moveTo(25, 25);
+        // tool.lineTo(105, 25);
+        // tool.lineTo(25, 105);
+        // tool.fill();
+        // tool.strokeStyle = "red" ;
+        // tool.stroke();
+        tool.lineWidth = 10;
+        tool.strokeStyle = "black" ;
+        let isMousedown ;
+        window.addEventListener("mousedown",function(e){
+            // console.log(e);
+            let x = e.clientX;
+            let y = e.clientY;
+            y = getYcoordinate(y);
+            tool.moveTo(x,y);
+            isMousedown = true;
+        })
+        
+        window.addEventListener("mousemove",function(e){
+            // console.log("e");
+            let x = e.clientX;
+            let y = e.clientY;
+            y = getYcoordinate(y);
+            if(isMousedown)
+            {
+                tool.lineTo(x,y);
+                tool.stroke();
+            }
+        })
+        
+        window.addEventListener("mouseup",function(e){
+            // console.log(e);
+            let x = e.clientX;
+            let y = e.clientY;
+            y = getYcoordinate(y);
+            isMousedown = false;
+        })
+
+        let redBtn = document.getElementById("red-btn");
+        let greenBtn = document.getElementById("green-btn");
+        let yellowBtn = document.getElementById("yellow-btn");
+
+        redBtn.addEventListener("click",function(){
+            tool.strokeStyle = "red" ;
+        })
+        greenBtn.addEventListener("click",function(){
+            tool.strokeStyle = "green" ;
+
+        })
+        yellowBtn.addEventListener("click",function(){
+            tool.strokeStyle = "yellow" ;
+        })
+
+        let buttonContainer = document.querySelector(".button-container");
+        function getYcoordinate(intialY)
+        {
+            let obj = buttonContainer.getBoundingClientRect();
+            return intialY - obj.height ;
+        }
+    </script>
+</body>
+</html>

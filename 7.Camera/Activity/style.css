@@ -28,3 +28,12 @@
     right: 8rem;
     top: 50vh;
 }
+
+.capture-btn{
+    background-color: rgb(236, 68, 96);
+    position: fixed;
+    border-radius: 50%;
+    height: 3rem;
+    right: 8rem;
+    top: 70vh;
+}
