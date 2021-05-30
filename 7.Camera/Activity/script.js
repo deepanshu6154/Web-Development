@@ -4,6 +4,8 @@ let videoEle = document.querySelector("#video-ele");
 let videoRecorder = document.querySelector("#record-btn");
 let recordState = false;
 let captureBtn = document.querySelector("#capture-btn");
+let timer = document.querySelector(".timer");
+let obj;
 // let audioEle = document.querySelector("audio");
 let constraints = {
     video: true,
@@ -44,19 +46,24 @@ videoRecorder.addEventListener("click", function() {
     }
     if(recordState==false)
     {
+        videoRecorder.classList.add("active");
         mediaRecorder.start();
-        videoRecorder.innerHTML = "Recording....";
+        startTimer();
+        // videoRecorder.innerHTML = "Recording....";
         recordState = true;
     }
     else{
+        videoRecorder.classList.remove("active");
         mediaRecorder.stop();
-        videoRecorder.innerHTML = "Record";
+        // videoRecorder.innerHTML = "Record";
+        stopTimer();
         recordState = false;
     }
 })
 
 captureBtn.addEventListener("click",function(){
     // create canvas element equal to video frame
+    captureBtn.classList.add("short-active");
     let canvas = document.createElement("canvas");
     canvas.width = videoEle.videoWidth;
     canvas.height = videoEle.videoHeight;
@@ -71,4 +78,26 @@ captureBtn.addEventListener("click",function(){
     anchor.click();
     anchor.remove();
     canvas.remove();
+    setTimeout(function(){
+        captureBtn.classList.remove("short-active");
+    },1000)
 })
+
+function startTimer(){
+    let count = 0;
+    timer.classList.add("active-timer");
+    obj = setInterval(function() {
+        let sec = (count%60)<10 ? `0${count%60}` : `${count%60}` ;
+        let min = (count/60)<10 ? `0${Number.parseInt(count/60)}` : `${Number.parseInt(count/60)}`;
+        let hr = (count/3600)<10 ? `0${Number.parseInt(count/3600)}` : `${Number.parseInt(count/3600)}` ;
+        timer.innerText = `${hr}:${min}:${sec}` ;
+        count++;
+    }, 1000);
+
+}
+
+function stopTimer(){
+    timer.classList.remove("active-timer");
+    timer.innerText = "00:00:00" ;
+    clearInterval(obj);
+}

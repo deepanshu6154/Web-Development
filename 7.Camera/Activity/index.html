@@ -9,11 +9,24 @@
 </head>
 <body>
     <!-- <audio controls autoplay></audio> -->
+
+    <div class="filter-container">
+        <div style="background-color:#F08080" class="filter"></div>
+        <div style="background-color:#40E0D0" class="filter"></div>
+        <div style="background-color:#DFFF00" class="filter"></div>
+        <div style="background-color:#9FE2BF" class="filter"></div>
+        <div style="background-color:#6495ED" class="filter"></div>
+    </div>
+    <div class="timer">00:00:00</div>
     <div class="video-container">
         <video controls autoplay id="video-ele" class="video-ele"></video>
     </div>
-    <button id="record-btn" class="record-btn">Record</button>
-    <button id="capture-btn" class="capture-btn">Capture</button>
+    <div class="record-container parent">
+        <div id="record-btn" class="record-btn"></div>
+    </div>
+    <div class="capture-container parent">
+        <button id="capture-btn" class="capture-btn"></button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
