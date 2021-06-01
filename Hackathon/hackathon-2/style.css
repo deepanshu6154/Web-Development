@@ -1,0 +1,190 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.main-container{
+    height: 100vh;
+    width: 100vw;
+    border: 1px solid black;
+}
+/* ******************************** Get data container ******************** */
+.get-data-container{
+    height:20vh;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.get-data{
+    height: 30%;
+    width: 40%;
+    margin-left: 8vw;
+    display: flex;
+}
+
+.drop-down-box{
+    height: 100%;
+    width: 10%;
+    /* display: flex;
+    align-items: center;
+    justify-content:space-evenly; */
+    background: linear-gradient( 90deg, rgba(97, 108, 111, 1) 0%, rgba(44, 51, 53, 1) 39% );
+    color: whitesmoke;
+    border-radius: 10px 0px 0px 10px ;
+    border: none;
+    outline: none;
+}
+
+select{
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif ;
+    font-style: italic;
+}
+.description-box{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    background-color:#dae0e2;
+}
+
+.description-input{
+    height: 60%;
+    width: 95%;
+    border: none;
+    outline: none;
+    background-color:#dae0e2;
+    border: 1px solid#dae0e2;
+}
+
+.amount-box{
+    height: 100%;
+    width: 15%;
+    display: flex;
+}
+
+.input-number{
+    width: 100%;
+    font: 400 13.3333px Arial;
+    background-color: rgb(230, 234, 235);
+    outline: none;
+    border: none;
+}
+.add-box{
+    height: 100%;
+    width: 15%;
+    background: linear-gradient( 90deg, rgba(97, 108, 111, 1) 0%, rgba(44, 51, 53, 1) 39% );
+    color: whitesmoke;
+    border-radius: 0px 10px 10px 0px ;
+    text-align: center;
+    padding-top: 8px;
+}
+
+/* *********************************Child-container( Income,show-data , Expense -box)*************** */
+.child-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: calc( 100vw - 10vw );
+    margin-left: 5vw;
+}
+
+.income-box{
+    height: 90%;
+    width: 40%;
+    border: 1px solid red;
+}
+
+.all-incomes-h1{
+    height: 15%;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 0px;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+}
+
+.income{
+    height: 2.5rem;
+    width: 95%;
+    margin-left: 0.5rem;
+    background-color:#ff9a9e;
+    display: flex;
+    padding-bottom: 5px;
+}
+.show-data{
+    height: 90%;
+    width: 20%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.date{
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.total-income{
+    height: 20%;
+    width: 100%;
+    /* border: 1px solid red; */
+    background-color: lightblue;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 600 ;
+    font-style: italic;
+    box-shadow: 0 0.5rem 1rem rgb(27 27 26);
+}
+
+.money-left{
+    height:30%;
+    width: 100%;
+    /* border: 1px solid red; */
+    background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 2rem;
+    box-shadow: 0 0.5rem 1rem rgb(27 27 26);
+}
+.total-expense{
+    height: 32.5%;
+    width: 100%;
+    /* border-top: 1px solid red; */
+    background-color: lightgreen;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 2rem;
+    box-shadow: 0 0.5rem 1rem rgb(27 27 26);
+}
+.expense-box{
+    height: 90%;
+    width: 40%;
+    /* border: 1px solid red; */
+}
+
+.all-expenses-h1{
+    height: 15%;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 0px;
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+/* ******************************************************************** */
