@@ -5,6 +5,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .main-container{
@@ -15,7 +16,6 @@ body{
 /* ******************************** Get data container ******************** */
 .get-data-container{
     height:20vh;
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,6 +38,7 @@ body{
     border-radius: 10px 0px 0px 10px ;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 select{
@@ -84,6 +85,7 @@ select{
     border-radius: 0px 10px 10px 0px ;
     text-align: center;
     padding-top: 8px;
+    cursor: pointer;
 }
 
 /* *********************************Child-container( Income,show-data , Expense -box)*************** */
@@ -99,7 +101,6 @@ select{
 .income-box{
     height: 90%;
     width: 40%;
-    border: 1px solid red;
 }
 
 .all-incomes-h1{
@@ -114,10 +115,54 @@ select{
     height: 2.5rem;
     width: 95%;
     margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
     background-color:#ff9a9e;
+    border-radius: 1rem;
     display: flex;
     padding-bottom: 5px;
+    position: relative;
 }
+
+.income-number{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: cursive;
+    margin-left: 3px;
+}
+.description{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: cursive;
+    margin-left: 1rem;
+} 
+.amount{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: cursive;
+}
+.cross-btn{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+}
+
+/* ******************************Show Data (Total income, Money left, Total Expense) ************************************** */
 .show-data{
     height: 90%;
     width: 20%;
@@ -126,15 +171,22 @@ select{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
+.fa-calender-alt{
+    top:0.1rem;
+    position: absolute;
+}
 .date{
     font-size: 1.5rem;
     margin-top: 0;
+    /* position: absolute; */
+    top: 0.2rem;
 }
 
 .total-income{
-    height: 20%;
+    min-height: 25%;
     width: 100%;
     /* border: 1px solid red; */
     background-color: lightblue;
@@ -146,9 +198,15 @@ select{
     font-style: italic;
     box-shadow: 0 0.5rem 1rem rgb(27 27 26);
 }
+.total-income-value{
+    overflow: auto;
+}
+.total-income-value::-webkit-scrollbar {
+    display: none;
+  }
 
 .money-left{
-    height:30%;
+    min-height:30%;
     width: 100%;
     /* border: 1px solid red; */
     background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
@@ -160,8 +218,16 @@ select{
     font-size: 2rem;
     box-shadow: 0 0.5rem 1rem rgb(27 27 26);
 }
+
+.money-left{
+    overflow: auto;
+}
+.money-left-value::-webkit-scrollbar {
+    display: none;
+  }
+/* *********************************Expense Container************************************* */
 .total-expense{
-    height: 32.5%;
+    min-height: 32.5%;
     width: 100%;
     /* border-top: 1px solid red; */
     background-color: lightgreen;
@@ -179,12 +245,42 @@ select{
     /* border: 1px solid red; */
 }
 
+.total-expense{
+    overflow: auto;
+}
+.total-expense::-webkit-scrollbar {
+    display: none;
+  }
+
 .all-expenses-h1{
     height: 15%;
     font-size: 3rem;
     text-align: center;
     margin-top: 0px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.expense{
+    height: 2.5rem;
+    width: 95%;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color:#f59295e0;
+    border-radius: 1rem;
+    display: flex;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.expense-number{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: cursive;
+    margin-left: 3px;
 }
 
 /* ******************************************************************** */
