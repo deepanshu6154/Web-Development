@@ -11,10 +11,13 @@ let totalIncomeValBox = document.querySelector(".total-income-value");
 let totalExpenseValBox = document.querySelector(".total-expense-value");
 let moneyLeftValBox = document.querySelector(".money-left-value");
 
-
+// function to get date,month and year (calender)
 getDate();
 
+
+// event listener to add income and expense modal in container
 addPlusBtn.addEventListener("click",function(e){
+    // if selected value is "+" then income modal created
     if(dropDownBox.value=="plus"){
         createIncomeModal();
         let childrenArr = incomeContainer.children;
@@ -22,11 +25,13 @@ addPlusBtn.addEventListener("click",function(e){
         for(let i=0;i<childrenArr.length;i++){
             let child = childrenArr[i];
             let incomeModal = child.children[2] ;
-            // console.log(incomeModal.innerText);
+            // sum of all values of income modal
             totalIncomeVal += Number(incomeModal.innerText) ;
         }
+        // set the total value in totalIncomeBox
         totalIncomeValBox.innerText = totalIncomeVal;
     }
+    // if selected value is "-" then expense modal is created
     else{
         createExpenseModal();
         let childrenArr = expenseContainer.children;
@@ -34,10 +39,9 @@ addPlusBtn.addEventListener("click",function(e){
         for(let i=0;i<childrenArr.length;i++){
             let child = childrenArr[i];
             let expenseModal = child.children[2] ;
-            // console.log(incomeModal.innerText);
             totalExpenseVal += Number(expenseModal.innerText) ;
         }
-
+        // set total expense value in expense box
         totalExpenseValBox.innerText = totalExpenseVal;
     }
 
@@ -45,7 +49,7 @@ addPlusBtn.addEventListener("click",function(e){
     moneyLeftValBox.innerText = moneyLeftVal ;
 });
 
-
+//  function to create income modal in Income container
 function createIncomeModal(){
     let incomeContainerChildren = incomeContainer.children;
     if(incomeContainerChildren.length==0){
@@ -109,11 +113,16 @@ function createIncomeModal(){
 
 }
 
+// crete expense modal in expense container
 function createExpenseModal(){
+    // total num of expense modal
     let expenseContainerChildren = expenseContainer.children;
     if(expenseContainerChildren.length==0){
+        // create a div element
         let div = document.createElement("div");
+        // get description value and input value 
         let {descVal,amountInputVal} = getDesc();
+        // set class attribute
         div.setAttribute("class","expense modal-1") ;
         div.innerHTML = `<div class="expense-number">1.</div>
         <div class="description">${descVal}</div>
@@ -121,8 +130,8 @@ function createExpenseModal(){
         <div class="cross-btn">
             <i class="fas fa-times-circle"></i>
         </div>` ;
+        // Add expense modal in expense container
         expenseContainer.appendChild(div);
-        //  Add event listener
     }
     else{
         let expenseContainerChildren = expenseContainer.children;
