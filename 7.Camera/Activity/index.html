@@ -5,18 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <!-- <audio controls autoplay></audio> -->
 
     <div class="filter-container">
-        <div style="background-color:#F08080" class="filter"></div>
-        <div style="background-color:#40E0D0" class="filter"></div>
-        <div style="background-color:#DFFF00" class="filter"></div>
-        <div style="background-color:#9FE2BF" class="filter"></div>
-        <div style="background-color:#6495ED" class="filter"></div>
+        <div style="background-color:#a87272" class="filter"></div>
+        <div style="background-color:#8dece3" class="filter"></div>
+        <div style="background-color:#e2f17a" class="filter"></div>
+        <div style="background-color:#aff5d1" class="filter"></div>
+        <div style="background-color:#9ab7ec" class="filter"></div>
+        <div class="filter"></div>
     </div>
+    <div class="ui-filter ui-filter-active"></div>
     <div class="timer">00:00:00</div>
     <div class="video-container">
         <video controls autoplay id="video-ele" class="video-ele"></video>
@@ -27,6 +31,17 @@
     <div class="capture-container parent">
         <button id="capture-btn" class="capture-btn"></button>
     </div>
+
+    <div class="zoom-container">
+        <div class="zoom-in icon">
+            <i class="fas fa-plus"></i> 
+        </div>
+        <div class="zoom-out icon">
+            <i class="fas fa-minus"></i>
+        </div>
+    </div>
+    <a href="gallery.html" class="gallery">Go to Gallery</a>
+    <script src="indexScript.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

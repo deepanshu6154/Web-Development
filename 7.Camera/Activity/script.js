@@ -6,6 +6,13 @@ let recordState = false;
 let captureBtn = document.querySelector("#capture-btn");
 let timer = document.querySelector(".timer");
 let obj;
+let allFilter = document.querySelectorAll(".filter");
+let uiFilter = document.querySelector(".ui-filter");
+let filterColor = "";
+let plusBtn = document.querySelector(".fa-plus");
+let minusBtn = document.querySelector(".fa-minus");
+let zoomLevel = 1;
+
 // let audioEle = document.querySelector("audio");
 let constraints = {
     video: true,
@@ -24,13 +31,14 @@ navigator.mediaDevices.getUserMedia(constraints)
                         // mime type
                         let blob = new Blob(buffer, { type: "video/mp4"});
                         // blob convert -> url
-                         let url = window.URL.createObjectURL(blob);
+                        //  let url = window.URL.createObjectURL(blob);
+                        addMediaToDB(blob,"video");
                         //  Download btn
-                        let a = document.createElement("a");
+                        // let a = document.createElement("a");
                         //  download
-                        a.download = "file.mp4"; 
-                        a.href = url;
-                        a.click();
+                        // a.download = "file.mp4"; 
+                        // a.href = url;
+                        // a.click();
                         buffer = [];
              })
             
@@ -68,16 +76,30 @@ captureBtn.addEventListener("click",function(){
     canvas.width = videoEle.videoWidth;
     canvas.height = videoEle.videoHeight;
     let tool = canvas.getContext("2d");
-    // draw a frame on that canvas
-    tool.drawImage(videoEle,0,0);
+
+    tool.scale(zoomLevel, zoomLevel);
+    let x = (tool.canvas.width / zoomLevel - canvas.width) / 2;
+    let y = (tool.canvas.height / zoomLevel - canvas.height) / 2;
+    // draw image
+    tool.drawImage(videoEle, x, y); 
+
+    if(filterColor){
+        // fill filter color in rectangle
+        tool.fillStyle = filterColor;
+        // translucent
+        tool.fillRect(0,0,canvas.width,canvas.height);
+    }
+
+
     // toDataUrl
     let link = canvas.toDataURL();
-    let anchor = document.createElement("a");
-    anchor.href = link;
-    anchor.download = "file.png";
-    anchor.click();
-    anchor.remove();
-    canvas.remove();
+    addMediaToDB(link,"img");
+    // let anchor = document.createElement("a");
+    // anchor.href = link;
+    // anchor.download = "file.png";
+    // anchor.click();
+    // anchor.remove();
+    // canvas.remove();
     setTimeout(function(){
         captureBtn.classList.remove("short-active");
     },1000)
@@ -101,3 +123,35 @@ function stopTimer(){
     timer.innerText = "00:00:00" ;
     clearInterval(obj);
 }
+
+// adding event listener to all filter
+
+for(let i=0;i<allFilter.length;i++){
+    allFilter[i].addEventListener("click",function(e){
+        let color = allFilter[i].style.backgroundColor ;
+        if(color!=""){
+            uiFilter.classList.add("ui-filter-active");
+            uiFilter.style.backgroundColor = color;
+            filterColor = color;
+        }
+        else{
+            uiFilter.classList.remove("ui-filter-active");
+            uiFilter.style.backgroundColor = "" ;
+            filterColor = "" ;
+        }
+    })
+}
+
+plusBtn.addEventListener("click",function(){
+    if(zoomLevel<3){
+        zoomLevel += 0.2;
+        videoEle.style.transform = `scale(${zoomLevel})` ;
+    }
+})
+
+minusBtn.addEventListener("click",function(){
+    if(zoomLevel>1){
+        zoomLevel -= 0.2;
+        videoEle.style.transform = `scale(${zoomLevel})` ;
+    }
+})
