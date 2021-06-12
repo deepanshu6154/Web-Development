@@ -18,7 +18,7 @@ let obj = {
 obj.func();
 
 // ////////////////////////////soln -1 using bind
-//  let ret = functioni.bind(argument)
+//  let ret = function.bind(argument)
 // the bind method returns another function whose this se set equal to the argument that is paased to bind.
 
 // function fn()
