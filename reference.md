@@ -42,8 +42,14 @@ https://pptr.dev/
 * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
 * https://htmldom.dev/download-a-file/
 
+# CSS
+* https://webgradients.com/
+* https://cdnjs.com/libraries/font-awesome 
+* https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()
+
 
 # Camera
+* https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API
 * https://developer.mozilla.org/en-US/docs/Web/API
 * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 * Canvas https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
@@ -51,11 +57,21 @@ https://pptr.dev/
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
 * https://www.30secondsofcode.org/css/t/animation/p/1
 * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+* https://javascript.info/indexeddb#cursors
+
 
 # Goto resource for browser theory
 * https://www.youtube.com/channel/UCTBGXCJHORQjivtgtMsmkAQ : Steve Griffith
 * https://www.youtube.com/watch?v=gm1QtePAYTM
 
+# Pepboard App
+* https://pepboard.herokuapp.com/
+
 # react
 * https://overreacted.io/why-do-we-write-super-props
 * https://www.youtube.com/playlist?list=PLhQjrBD2T381Q6R1jRxgXknYO7VuTYPBI
+
+# YouTube Channels to explore
+* https://www.youtube.com/c/TheNetNinja/playlists
+* https://www.youtube.com/kepowob/playlists
+* https://www.youtube.com/user/shiffman  (for Chrome extension)
