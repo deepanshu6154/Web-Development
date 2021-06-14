@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createContext } from 'react'
 
 export default class Todo extends Component {
     constructor(props)
@@ -23,30 +23,64 @@ export default class Todo extends Component {
             currTask:''
         })
     }
+
+    onDelete=(id)=>{
+        let nta = this.state.tasks.filter(task =>{
+            return task.id != id;
+        })
+        this.setState({tasks:nta});
+    }
  
     render() {
-        console.log("rendered");
         return (
-            <div>
+            <>
+            <InputComponent currTask={"this.state.currTask"} handleChange={"this.handleChange"}
+            handleClick={"this.handleClick"} />
+            <TaskList  tasks={"this.state.tasks"} onDelete={"this.onDelete"}/>
+            </>
+        )
+    }
+}
+
+
+
+class InputComponent extends Component {
+
+    constructor(props)
+    {
+        super(props);
+    }
+    render() {
+        return (
+    
                 <div className="input-container">
-                    <input onChange={this.handleChange}
-                    value={this.state.currTask} type='text'></input>
-                    <button onClick={this.handleClick}>Add</button>
+                    <input type='text' value={this.props.currTask} onChange={this.props.handleChange}></input>
+                    <button onClick={this.props.handleClick}>Add</button>
                 </div>
+                
+        )
+    }
+}
+
+
+ class TaskList extends Component {
+     constructor(props)
+     {
+        super(props);
+     }
+    render() {
+        return (
                 <div className="class-list">
                     <ul>
-                        {
-                            this.state.tasks.map(task=>(
-                                <li>
+                        { this.props.tasks.map(task=>(
+                                <li id={task.id}>
                                     <h1>{task.txt}</h1>
-                                    <button>Delete</button>
+                                    <button onClick={()=>this.props.onDelete(task.id)}></button>
                                 </li>
                             )
-                                
-                            )}
+                        )}
                     </ul>
                 </div>
-            </div>
         )
     }
 }

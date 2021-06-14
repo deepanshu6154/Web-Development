@@ -24,18 +24,33 @@
                 this.setState({count:this.state.count+1});
             }
 
+            decrement =()=>{
+                this.setState({count:this.state.count-1});
+            }
+
             render()
             {
                 return(
                     <React.Fragment>
                         <h1>{this.state.count}</h1>
                         <button onClick={this.increment}>+</button>
+                        <button onClick={this.decrement}>-</button>
                     </React.Fragment>
                 )
             }
         }
 
-        ReactDOM.render(<Counter></Counter>,document.querySelector("#root"));
+        function Counters(props)
+        {
+            return(
+                <React.Fragment>
+                    <Counter></Counter>
+                    <Counter></Counter>
+                </React.Fragment>
+            )
+        }
+
+        ReactDOM.render(<Counters></Counters>,document.querySelector("#root"));
     </script>
 </body>
 </html>
