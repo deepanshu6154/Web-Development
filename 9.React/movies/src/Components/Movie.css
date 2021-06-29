@@ -1,5 +1,46 @@
+body{
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0;
+}
+
 .col-9{
     position: absolute;
     top: 15vh;
     left: 15vw;
+}
+
+.col-3{
+
+    position: absolute;
+    top: 10vh;
+    left: 2vw;
+}
+
+.movie-type{
+    display: block;
+    margin-top: 2vh;
+    width: 50%;
+    
+}
+
+
+.search-text{
+    position: absolute;
+    top:5vh;
+    left: 35vw;
+}
+
+.num-movie{
+    position: absolute;
+    top: 5vh;
+    left: 55vw;
+}
+
+
+/* Loader */
+.btn-primary{
+    position: absolute;
+    top: 50%;
+    left: 48%;
 }
