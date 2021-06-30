@@ -4,6 +4,11 @@ body{
     padding: 0;
 }
 
+.container{
+    position: absolute;
+    top: 10vh;
+    left : 10vw;
+}
 .col-9{
     position: absolute;
     top: 15vh;
