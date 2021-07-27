@@ -6,6 +6,9 @@ import State from './Components/State.js'
 import Listandkeys from './Components/Listandkeys.js'
 import Formhandling from './Components/Formhandling.js'
 import Lifecycle from './Components/Lifecycle';
+import Q1 from './Components/Q1';
+import Q2 from './Components/Q2';
+import Q5 from './Components/Q5';
 
 function App() {
 
@@ -19,7 +22,10 @@ function App() {
       {/* <State></State> */}
       {/* <Listandkeys numArr={numbers}/> */}
       {/* <Formhandling></Formhandling> */}
-      <Lifecycle></Lifecycle>
+      {/* <Lifecycle></Lifecycle> */}
+      {/* <Q1></Q1> */}
+      {/* <Q2></Q2> */}
+      <Q5></Q5>
     </div>
   );
 }
