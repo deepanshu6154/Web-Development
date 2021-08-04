@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import Uswo from './useState/Uswo'
+import Central from './Context2/Central';
 
 function App() {
   return (
-    <Uswo></Uswo>
+    <Central></Central>
   );
 }
 
